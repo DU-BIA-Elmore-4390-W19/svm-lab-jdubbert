@@ -1,6 +1,6 @@
 ---
 title: "Untitled"
-author: "Your Name Goes Here"
+author: "Jacob Dubbert"
 date: "3/5/2019"
 output: github_document
 ---
@@ -9,13 +9,39 @@ output: github_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+```{r libs, message = F, warning = F, include = F}
+library(MASS)
+library(tidyverse)
+library(broom)
+library(caret)
+library(ISLR)
+library(janitor)
+library(plotROC)
+library(kernlab) # read about this package
+theme_set(theme_bw())
+```
+
 1. This question refers to Chapter 9 Problem 8 beginning on page 371 in the 
 text. 
 
     a. Create a training sample that has roughly 80% of the observations. Use
   `set.seed(19823)`.
+```{r}
+set.seed(19823)
+df <- OJ
+inTraining <- createDataPartition(df$Purchase,
+                                  p=.8,
+                                  list = F)
+training <- df[inTraining,]
+testing <- df[-inTraining,]
+```
+  
     b. Use the `kernlab` package to fit a support vector classifier to the 
   training data using `C = 0.01`. 
+```{r}
+
+```
+  
     c. Compute the confusion matrix for the training data. Report the overall 
   error rates, sensitivity, and specificity. 
     d. Construct the ROC curve. 
